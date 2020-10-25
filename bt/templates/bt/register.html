@@ -1,0 +1,61 @@
+{% extends 'bt/basic.html' %}
+{% block title %}Register {% endblock %}
+{% block body %}
+
+{% if messages %}
+{% for msg in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{ msg }}</strong> Click<a href="/bt/login" class="alert-link"> Here </a>to login.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% endif %}
+
+
+  <section id="register" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4>
+                <i class="fas fa-user-plus"></i> Register</h4>
+            </div>
+            <div class="card-body">
+                <form action="/bt/register/" method="post">{% csrf_token %}
+                  <div class="form-group">
+                  <label for="fname">First Name</label>
+                  <input type="text" name="fname" id="fname" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="lname">Last Name</label>
+                  <input type="text" name="lname" id="lname" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" name="phone" id="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+                <input type="submit" value="Register" class="btn btn-secondary btn-block">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
